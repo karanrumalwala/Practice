@@ -1,0 +1,167 @@
+ASSIGNMENT-2
+
+<div>
+        <p name="marlabs">Paragraph - 1</p>
+        <p name="marlabs-new-jersey">Paragraph - 1</p>
+        <p name="new-jersey-marlabs">Paragraph - 1</p>
+        <p name="marlabs new jersey">Paragraph - 1</p>
+        <p name="new jersey marlabs">Paragraph - 1</p>
+        <p name="newjersey marlabs philadelphia">Paragraph - 1</p>
+        <p name="newJerseymarlabs">Paragraph - 1</p>
+        <p name="newJerseymarlabsPhiladelphia">Paragraph - 1</p>
+ </div>
+
+Question 1: (use Jquery)
+
+Apply css border of (1px solid green) to all elements containing attribute name ‘marlabs’
+jQuery(document).ready(function(){
+   jQuery("p[name*='marlabs']").css(
+       'border','1px solid green'
+   );
+});
+
+Apply css border of (1px solid green) elements containing attribute name ONLY ‘marlabs’
+jQuery(document).ready(function(){
+   jQuery("p[name='marlabs']").css(
+       'border','1px solid green'
+   );
+});
+
+Apply css border of (1px solid green) to all elements starting with attribute name ‘marlabs’
+jQuery(document).ready(function(){
+   jQuery("p[name^='marlabs']").css(
+       'border','1px solid green'
+   );
+});
+
+Apply css border of (1px solid green) to all elements exactly ending with attribute name ‘marlabs’
+jQuery(document).ready(function(){
+   jQuery("p[name$='marlabs']").css(
+       'border','1px solid green'
+   );
+});
+
+Apply css border of (1px solid green) to all elements containing WORD ‘marlabs’
+jQuery(document).ready(function(){
+   jQuery("p[name~='marlabs']").css(
+       'border','1px solid green'
+   );
+});
+
+Apply css border of (1px solid green) to the last element in div
+jQuery(document).ready(function(){
+   jQuery("p").last().css(
+       'border','1px solid green'
+   );
+});
+
+
+Question 2:
+
+Give one examples of each that prints ‘Hello marlabs’
+
+.on()
+jQuery(document).ready(function(){
+$('p').on("click",function(){
+    console.log("hello marlabs");
+    });
+});
+
+.one()
+jQuery(document).ready(function(){
+$('p').one("click",function(){
+   console.log("hello marlabs");
+   });
+});
+
+.trigger()
+jQuery(document).ready(function(){
+$('p').one("click",function(){
+   console.log("hello marlabs");
+   });
+$('p').trigger('click');
+});
+
+.scroll()
+<p style="width:100px;height:100px;overflow:scroll;">
+
+.resize()
+jQuery(window).resize(function(){
+$("div").append("hello marlabs");
+});
+
+
+.hover()
+jQuery(document).ready(function(){
+   jQuery("p").hover(function(){
+       $(this).append("hello marlabs");
+   });
+});
+
+
+.keypress()
+$(document).ready(function(){
+ $("input").keypress(function(){
+   $("span").append("hello marlabs");
+ });
+});
+
+.keydown()
+$(document).ready(function(){
+ $("input").keydown(function(){
+   $("span").append("hello marlabs");
+ });
+});
+
+.keyup()
+$(document).ready(function(){
+ $("input").keyup(function(){
+   $("span").append("hello marlabs");
+ });
+});
+
+.dblclick()
+$(document).ready(function(){
+ $("p").dblclick(function(){
+   alert("hello marlabs");
+ });
+});
+
+
+
+
+
+
+Question 3:
+
+Make a GET call to https://pokeapi.co/api/v2/pokemon/ditto/
+You will see an object game_indices of type Array
+Inside that You will see ‘version’ > ‘name’
+
+PRINT all names in an array (It has to look like this [‘black’, ‘white’ ………] )
+Use both JavaScript and jQuery Approach
+jQuery(document).ready(function(){
+   jQuery(document).on('click','#btn',function(){
+       jQuery.ajax({
+           'type':'GET',
+           'url':'https://pokeapi.co/api/v2/pokemon/ditto/',
+           'datatype':'json',
+           'success':function(data){
+               data2= data.game_indices;
+               var kk=[];
+               $.each(data2, function(index, value){
+                   data3=value.version.name;
+                   kk.push(data3);
+               });
+               console.log(kk);
+           },
+           statusCode:{
+               200:function(){
+                   console.log('Thank you');
+               }
+           }
+       })
+   });
+});
+
+ 
